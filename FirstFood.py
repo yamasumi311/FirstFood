@@ -3,6 +3,7 @@ from functions import check_array_contains
 
 baby_name = input('Enter baby name: ')
 
+
 # add new food in an array
 items = []
 answer = 'y'
@@ -21,6 +22,9 @@ print(f'List of food {baby_name} tried:')
 for index, item in enumerate(items):
     print(f'{index + 1}: {item}')
 
+print(f'{100 - len(items)} more foods until 100!')
 
+if len(items) == 100:
+    print(f'Hooray!! {baby_name} has tried 100 foods!!')
 
 
