@@ -2,6 +2,7 @@
 from functions import check_array_contains
 
 baby_name = input('Enter baby name: ')
+file_name = baby_name
 
 
 # add new food in an array
@@ -28,7 +29,7 @@ if len(items) == 100:
     print(f'Hooray!! {baby_name} has tried 100 foods!!')
 
 
-with open('FoodList','w') as file:
+with open(file_name, 'w') as file:
     for item in items:
         file.write(str(item) + '\n')
 

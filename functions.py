@@ -6,3 +6,4 @@ def check_array_contains(newFood, items):
             return False
     return True
 
+def check_existing_file()
