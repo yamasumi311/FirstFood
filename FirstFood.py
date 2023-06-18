@@ -1,22 +1,28 @@
-# baby's name
-from functions import check_array_contains
+import os
+
+from functions import add_food, view_list
 
 baby_name = input('Enter baby name: ')
 file_name = baby_name
+# check if file is already exists
+if os.path.exists(baby_name):
+    # open existing file
+    with open(file_name, 'r') as file:
+        # retrieve items into items array
+        items = file.readlines()
+    print('Do you want to add food? or view list?')
+    choice = input('Enter "a" to add food or "b" to view list: ')
+    while choice != 'a' and choice != 'b':
+        print('Invalid input')
+        choice = input('Enter "a" to add food or "b" to view list: ')
+        if choice == 'a':
+            add_food('y')
+        elif choice == 'b':
+            view_list(items)
+else:  # if file is not exists
+    items = []  # create an empty array
+    add_food('y')
 
-
-# add new food in an array
-items = []
-answer = 'y'
-while answer == 'y':
-    new_food = input('Enter new food: ')
-    if check_array_contains(new_food, items):
-        items.append(new_food)
-    else:
-        print(f'{new_food} is already registered.')
-    answer = input('Do you want to add more foods?(y or n): ')
-    while answer != 'n' and answer != 'y':
-        answer = input('Invalid input. Enter "y" to yes or "n" to no: ')
 
 print(f'{baby_name} has had {len(items)} foods!!')
 print(f'List of food {baby_name} tried:')
@@ -29,7 +35,7 @@ if len(items) == 100:
     print(f'Hooray!! {baby_name} has tried 100 foods!!')
 
 
-with open(file_name, 'w') as file:
+with open(file_name, 'a') as file:
     for item in items:
         file.write(str(item) + '\n')
 
