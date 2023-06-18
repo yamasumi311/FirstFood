@@ -28,3 +28,7 @@ if len(items) == 100:
     print(f'Hooray!! {baby_name} has tried 100 foods!!')
 
 
+with open('FoodList','w') as file:
+    for item in items:
+        file.write(str(item) + '\n')
+
