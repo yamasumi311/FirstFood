@@ -6,11 +6,3 @@ def check_array_contains(newFood, items):
             return False
     return True
 
-
-def ask_more_items(answer):
-    if answer == 'y':
-        return True
-    elif answer == 'n':
-        return None
-    else:
-        return False
