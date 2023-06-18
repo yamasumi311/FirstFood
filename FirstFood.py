@@ -1,11 +1,9 @@
-import os
-
-from functions import add_food, view_list
+from functions import add_food, view_list, check_existing_file
 
 baby_name = input('Enter baby name: ')
 file_name = baby_name
 # check if file is already exists
-if os.path.exists(baby_name):
+if check_existing_file(baby_name):
     # open existing file
     with open(file_name, 'r') as file:
         # retrieve items into items array
@@ -16,12 +14,12 @@ if os.path.exists(baby_name):
         print('Invalid input')
         choice = input('Enter "a" to add food or "b" to view list: ')
         if choice == 'a':
-            add_food('y')
+            add_food('y', items)
         elif choice == 'b':
             view_list(items)
 else:  # if file is not exists
     items = []  # create an empty array
-    add_food('y')
+    add_food('y', items)
 
 
 print(f'{baby_name} has had {len(items)} foods!!')
