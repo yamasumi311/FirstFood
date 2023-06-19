@@ -13,6 +13,19 @@ def check_array_contains(newFood, items):
 def file_exists_in_folder(file_path):
     return os.path.exists(file_path)
 
+def read_food_from_file(baby_name):
+    items = []  # create an empty array
+    file_name = baby_name
+    folder_path = 'data'
+    file_path = os.path.join(folder_path, file_name)
+    # check if file is already exists
+    if file_exists_in_folder(file_path):
+        # open existing file
+        with open(file_path, 'r') as file:
+            # retrieve items into items array
+            for line in file:
+                items.append(line.strip())
+    return items
 
 # add new food in an array
 def add_food(answer, items):
