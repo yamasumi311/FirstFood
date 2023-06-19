@@ -36,6 +36,7 @@ while True:
         print('Invalid input')
 
 # 3
+view_list(items, baby_name)
 with open(file_path, 'w') as file:
     for item in items:
         file.write(str(item) + '\n')
