@@ -16,7 +16,7 @@ def file_exists_in_folder(file_path):
 def read_food_from_file(baby_name):
     items = []  # create an empty array
     file_name = baby_name
-    get_file_path(file_name)
+    file_path = get_file_path(file_name)
     # check if file is already exists
     if file_exists_in_folder(file_path):
         # open existing file
