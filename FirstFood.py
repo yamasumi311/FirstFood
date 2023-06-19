@@ -1,5 +1,5 @@
 import os
-from functions import add_food, view_list, file_exists_in_folder, read_food_from_file
+from functions import add_food, view_list, file_exists_in_folder, read_food_from_file, get_file_path
 
 # TODO Program structure
 # 1. Open file and read all data to an array
@@ -25,7 +25,7 @@ while True:
         print('Invalid input')
 
 # 3
-view_list(items, baby_name)
+file_path = get_file_path(baby_name)
 with open(file_path, 'w') as file:
     for item in items:
         file.write(str(item) + '\n')

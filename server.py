@@ -12,7 +12,7 @@ def get_name(baby_name):
     if request.method == 'POST':
         file_path = get_file_path(baby_name)
         with open(file_path, 'a') as file:
-            file.write(str(request.data) + '\n')
+            file.write(request.get_data(as_text=True) + '\n')
         return 'OK'
     else:
         items = read_food_from_file(baby_name)
