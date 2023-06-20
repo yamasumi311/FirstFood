@@ -5,7 +5,23 @@
     <title>First Food</title>
 </head>
 <body>
-hello
+    <div>
+        <form id="form" >
+            <ul>
+                <li>
+                    <label for="baby_name">Baby name:</label>
+                    <input type="text" id="baby_name" name="baby_name" required />
+                </li>
+                <li>
+                    <label for="new_food">New food:</label>
+                    <input type="text" id="new_food" name="new_food" />
+                </li>
+                <li class="button">
+                    <button type="submit">Add new food</button>
+                </li>
+            </ul>
+        </form>
+    </div>
 <ul id="food"></ul>
 </body>
 <script type="module" src="script.js">
