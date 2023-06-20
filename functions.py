@@ -13,6 +13,7 @@ def check_array_contains(newFood, items):
 def file_exists_in_folder(file_path):
     return os.path.exists(file_path)
 
+
 def read_food_from_file(baby_name):
     items = []  # create an empty array
     file_name = baby_name
