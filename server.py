@@ -1,14 +1,25 @@
 import os
 
-from flask import Flask, request
+from flask import Flask, request, render_template, send_from_directory
 
 from functions import read_food_from_file, get_file_path, check_array_contains
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="HTML")
+
+@app.route('/')
+def home():
+   return render_template('FirstFood.html')
 
 
-@app.route("/<baby_name>", methods=['POST', 'GET'])
+@app.route('/script.js')
+def script():
+    return send_from_directory('HTML', 'script.js')
+
+@app.route("/baby/<baby_name>", methods=['POST', 'GET'])
 def get_name(baby_name):
+    print(baby_name)
+    if not baby_name:
+        return 'Baby name is required'
     items = read_food_from_file(baby_name)
     if request.method == 'POST':
         file_path = get_file_path(baby_name)
