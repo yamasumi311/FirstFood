@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>First Food</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div>
-        <form id="form" >
-            <ul>
-                <li>
-                    <label for="baby_name">Baby name:</label>
-                    <input type="text" id="baby_name" name="baby_name" required />
-                </li>
-                <li>
-                    <label for="new_food">New food:</label>
-                    <input type="text" id="new_food" name="new_food" />
-                </li>
-                <li class="button">
-                    <button type="submit">Add new food</button>
-                </li>
-            </ul>
-        </form>
-    </div>
-<ul id="food"></ul>
+
+    <header id='baby_name' class="hidden">
+        <h1>baby_name</h1>
+    </header>
+
+    <form id="form_baby_name">
+        <label for="baby_name">Baby name:</label>
+        <input type="text" id="baby_name" name="baby_name" required />
+        <button type="submit">Submit</button>
+    </form>
+
+    <ul id="food"></ul>
+
+    <form id="form_new_food" class="hidden">
+        <label for="new_food">New food:</label>
+        <input type="text" id="new_food" name="new_food" />
+        <button type="submit">Add new food</button>
+    </form>
+
+
 </body>
 <script type="module" src="script.js">
 </script>
+
 </html>
