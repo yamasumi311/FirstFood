@@ -15,6 +15,11 @@ def home():
 def script():
     return send_from_directory('HTML', 'script.js')
 
+
+@app.route('/style.css')
+def css():
+    return send_from_directory('HTML', 'style.css')
+
 @app.route("/baby/<baby_name>", methods=['POST', 'GET'])
 def get_name(baby_name):
     print(baby_name)
@@ -35,4 +40,4 @@ def get_name(baby_name):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

@@ -1,0 +1,21 @@
+body {
+    font-size: 1em;
+	text-align: center;
+	/* font-family: Arial, sans-serif; */
+	max-width: 1200px;
+	margin: auto;
+}
+
+form {
+    border-radius: 5px;
+    background-color: antiquewhite;
+    padding: 20px 20px 5px;
+    max-width: 750px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+    
