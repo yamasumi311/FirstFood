@@ -8,7 +8,7 @@ body {
 
 form {
     border-radius: 5px;
-    background-color: rgb(208, 132, 33);
+    background-color: antiquewhite;
     padding: 20px 20px 5px;
     max-width: 750px;
     margin: 10px auto;
@@ -18,7 +18,4 @@ form {
 .hidden {
     display: none;
 }
-
-ul {
-
-}
+    
