@@ -6,3 +6,4 @@ set -o pipefail
 git reset --hard
 git pull
 sudo systemctl restart firstfood
+echo 'Restart completed'
