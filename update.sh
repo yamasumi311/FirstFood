@@ -4,4 +4,4 @@ set -o errexit
 set -o pipefail
 
 git pull
-service firstfood restart
+sudo systemctl restart firstfood
