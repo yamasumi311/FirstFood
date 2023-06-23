@@ -46,6 +46,7 @@ def add_food(answer, items):
             answer = input('Invalid input. Enter "y" to yes or "n" to no: ')
 
 
+
 def view_list(items, baby_name):
     print(f'{baby_name} has had {len(items)} foods!!')
     print(f'List of food {baby_name} tried:')
@@ -56,4 +57,5 @@ def view_list(items, baby_name):
 
     if len(items) == 100:
         print(f'Hooray!! {baby_name} has tried 100 foods!!')
+
 
