@@ -36,7 +36,19 @@ function register_adding_new_food(baby_name) {
     function add_new_food(event) {
         event.preventDefault();
         const new_food = event.target.elements.new_food.value
-        fetch('/baby/' + baby_name, { method: 'POST', body: new_food })
+        const category = event.target.elements.category.value
+        const body = {
+            category: category,
+            food: new_food
+        }
+        // fetch(URL, options)
+        fetch('/baby/' + baby_name, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body)
+        })
             .then(function (response) {
                 return response.text()
             })
