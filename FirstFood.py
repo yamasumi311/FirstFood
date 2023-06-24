@@ -29,10 +29,6 @@ while True:
 
 objects = []
 
-for item in items:
-    obj = {"Food": item,
-           "Category": category}
-    objects.append(obj)
 
 # 3
 file_path = get_file_path(baby_name)
