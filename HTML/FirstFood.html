@@ -24,7 +24,21 @@
 
     <form id="form_new_food" class="hidden">
         <label for="new_food">New food:</label>
+        <!-- select category -->
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="Select category">Select category</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Grain/Roots">Grain and Roots</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Legumes">Legumes</option>
+            <option value="Meat/Fish/Eggs">Meat, Fish and Eggs</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Natural Seasonings">Natual Seasonings</option>
+            <option value="Seeds/Nuts">Seeds and Nuts</option>
+        </select>
         <input type="text" id="new_food" name="new_food" />
+
         <button type="submit">Add new food</button>
     </form>
 
