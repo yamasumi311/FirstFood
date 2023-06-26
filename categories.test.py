@@ -26,6 +26,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(mock_categories['a'], ['newfood'])
 
 
+    def test_add_to_category_will_filter_away_duplicate(self):
+        mock_categories = {
+            'a': []
+        }
+        add_to_category('a', 'newfood', mock_categories)
+        add_to_category('a', 'newfood', mock_categories)
+        self.assertEqual(mock_categories['a'], ['newfood'])
+
 
 
 

@@ -1,14 +1,15 @@
-import os
-
 from flask import Flask, request, render_template, send_from_directory
 
-from functions import read_food_from_file, get_file_path, check_array_contains
+from categories import add_to_category
+from functions import read_categories_from_file, \
+    write_categories_to_file
 
 app = Flask(__name__, template_folder="HTML")
 
+
 @app.route('/')
 def home():
-   return render_template('FirstFood.html')
+    return render_template('FirstFood.html')
 
 
 @app.route('/script.js')
@@ -20,23 +21,21 @@ def script():
 def css():
     return send_from_directory('HTML', 'style.css')
 
+
 @app.route("/baby/<baby_name>", methods=['POST', 'GET'])
 def get_name(baby_name):
-    print(baby_name)
     if not baby_name:
         return 'Baby name is required'
-    items = read_food_from_file(baby_name)
+    c = read_categories_from_file(baby_name)
     if request.method == 'POST':
-        file_path = get_file_path(baby_name)
-        new_food = request.get_data(as_text=True)
-        with open(file_path, 'a') as file:
-            if check_array_contains(new_food, items):
-                file.write(new_food + '\n')
-                return 'Hooray! New food added:)'
-            else:
-                return 'Already tried before'
+        body = request.get_json()
+        new_food = body["food"]
+        category = body["category"]
+        add_to_category(category, new_food, c)
+        write_categories_to_file(baby_name, c)
+        return "ok"
     else:
-        return items
+        return c
 
 
 if __name__ == "__main__":

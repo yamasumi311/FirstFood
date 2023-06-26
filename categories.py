@@ -1,5 +1,7 @@
+import json
+
 # categories
-categories = {
+empty_categories = {
     "Fruits": [],
     "Grains/Roots": [],
     "Vegetables": [],
@@ -11,7 +13,7 @@ categories = {
 }
 
 
-categories_keys = categories.keys()
+categories_keys = empty_categories.keys()
 
 
 def get_items_from_category(selected_category, categories):
@@ -21,4 +23,7 @@ def get_items_from_category(selected_category, categories):
         return []
 
 def add_to_category(category, new_food, categories):
-    categories[category].append(new_food)
+    for item in categories[category]:
+        if item == new_food:
+            return False
+    return categories[category].append(new_food)
