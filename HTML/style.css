@@ -1,21 +1,61 @@
 body {
+    background-color: rgb(202, 209, 176);
     font-size: 1em;
 	text-align: center;
-	/* font-family: Arial, sans-serif; */
-	max-width: 1200px;
 	margin: auto;
 }
 
 form {
     border-radius: 5px;
-    background-color: antiquewhite;
+    background-color: rgb(243, 239, 190);
     padding: 20px 20px 5px;
-    max-width: 750px;
     margin: 10px auto;
     text-align: left;
+        width: 90%;
 }
 
 .hidden {
     display: none;
 }
-    
+
+.collapsible {
+    background-color: rgb(119, 107, 107);
+    color: white;
+    cursor: pointer;
+    padding: 1em;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    margin-top: 0.5em;
+}
+
+.active, .collapsible:hover {
+    background-color: rgb(56, 43, 43);
+}
+
+.foods {
+    padding: 0 1em;
+    overflow: hidden;
+    background-color: #ffffff;
+    text-align: left;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 0.5em;
+}
+
+#list {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.foods.collapsed {
+    display: none;
+}
+
+.collapsible.collapsed {
+    border-radius: 10px;
+}

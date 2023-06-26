@@ -61,3 +61,24 @@ function register_adding_new_food(baby_name) {
     document.getElementById('form_new_food')
         .addEventListener('submit', add_new_food)
 }
+
+
+
+const coll = document.getElementsByClassName("collapsible");
+
+for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        const button = this
+        const foods = button.nextElementSibling;
+        if (button.classList.contains("collapsed")) {
+            button.classList.remove("collapsed")
+            foods.classList.remove("collapsed")
+
+        } else {
+            button.classList.add("collapsed")
+            foods.classList.add("collapsed")
+        }
+
+
+    })
+}
