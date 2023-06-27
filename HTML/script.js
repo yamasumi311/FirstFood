@@ -4,14 +4,7 @@ function read(baby_name) {
             return response.json()
         })
         .then(function (foods) {
-            const ul = document.getElementById('food')
-            ul.innerHTML = ''
-            for (let index = 0; index < foods.length; index++) {
-                const food = foods[index];
-                const li = document.createElement('li')
-                li.textContent = food
-                ul.appendChild(li)
-            }
+            turn_json_object_to_html(foods)
         })
 }
 
@@ -64,28 +57,10 @@ function register_adding_new_food(baby_name) {
 
 
 
-const categories = {
-    "Dairy": [
-        "yogurt"
-    ],
-    "Fruits": [
-        "apple",
-        "banana",
-        "Mandarine"
-    ],
-    "Grains/Roots": [
-        "rice"
-    ],
-    "Legumes": [],
-    "Meat/Fish/Eggs": [],
-    "Natural Seasonings": [],
-    "Seeds/Nuts": [],
-    "Vegetables": []
-}
-
 function turn_json_object_to_html(categories) {
     const category_names = Object.keys(categories)
     const root = document.getElementById("list")
+    root.innerHTML = ''
     for (let i = 0; i < category_names.length; i++) {
         const category = category_names[i]
         const foods = categories[category]
@@ -127,8 +102,6 @@ function create_div_element() {
     div.appendChild(ul)
     return div
 }
-
-turn_json_object_to_html(categories)
 
 function toggle_class_collapsed() {
     const coll = document.getElementsByClassName("collapsible");
