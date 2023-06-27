@@ -64,25 +64,6 @@ function register_adding_new_food(baby_name) {
 
 
 
-const coll = document.getElementsByClassName("collapsible");
-
-for (let i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-        const button = this
-        const foods = button.nextElementSibling;
-        if (button.classList.contains("collapsed")) {
-            button.classList.remove("collapsed")
-            foods.classList.remove("collapsed")
-
-        } else {
-            button.classList.add("collapsed")
-            foods.classList.add("collapsed")
-        }
-
-
-    })
-}
-
 const categories = {
     "Dairy": [
         "yogurt"
@@ -119,6 +100,8 @@ function turn_json_object_to_html(categories) {
             ul.appendChild(f)
         }
     }
+    toggle_class_collapsed()
+
 }
 
 function create_food_element(food_name) {
@@ -131,6 +114,7 @@ function create_button_element(category_name) {
     const button = document.createElement("button")
     button.setAttribute("type", "button")
     button.classList.add("collapsible")
+    button.classList.add("collapsed")
     button.textContent = category_name
     return button
 }
@@ -138,9 +122,30 @@ function create_button_element(category_name) {
 function create_div_element() {
     const div = document.createElement("div")
     div.classList.add("foods")
+    div.classList.add("collapsed")
     const ul = document.createElement("ul")
     div.appendChild(ul)
     return div
 }
 
 turn_json_object_to_html(categories)
+
+function toggle_class_collapsed() {
+    const coll = document.getElementsByClassName("collapsible");
+
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            const button = this
+            const foods = button.nextElementSibling;
+            if (button.classList.contains("collapsed")) {
+                button.classList.remove("collapsed")
+                foods.classList.remove("collapsed")
+
+            } else {
+                button.classList.add("collapsed")
+                foods.classList.add("collapsed")
+            }
+        })
+    }
+}
+
