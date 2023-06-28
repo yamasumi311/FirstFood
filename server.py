@@ -36,6 +36,8 @@ def get_name(baby_name):
         return "added a food"
     elif request.method == 'DELETE':
         body = request.get_json()
+        if not "food" in body:
+            return 'food is required'
         selected_food = body["food"]
         category = body["category"]
         remove_from_category(category, selected_food, c)

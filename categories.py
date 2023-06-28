@@ -29,6 +29,9 @@ def add_to_category(category, new_food, categories):
     return categories[category].append(new_food)
 
 def remove_from_category(category, selected_food, categories):
+    print(category)
+    print(selected_food)
+    print(categories)
     if category in categories:
         for food in categories[category]:
             if food == selected_food:

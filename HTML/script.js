@@ -1,10 +1,12 @@
+"use strict";
+
 function read(baby_name) {
     return fetch('/baby/' + baby_name)
         .then(function (response) {
             return response.json()
         })
         .then(function (foods) {
-            turn_json_object_to_html(foods)
+            turn_json_object_to_html(baby_name, foods)
         })
 }
 
@@ -57,7 +59,7 @@ function register_adding_new_food(baby_name) {
 
 
 
-function turn_json_object_to_html(categories) {
+function turn_json_object_to_html(baby_name, categories) {
     const category_names = Object.keys(categories)
     const root = document.getElementById("list")
     root.innerHTML = ''
@@ -72,7 +74,7 @@ function turn_json_object_to_html(categories) {
         for (let j = 0; j < foods.length; j++) {
             const food = foods[j]
             const f = create_food_element(food)
-            const d = create_delete_button()
+            const d = create_delete_button(baby_name, food, category)
             ul.appendChild(f)
             f.appendChild(d)
         }
@@ -91,7 +93,6 @@ function create_button_element(category_name) {
     const button = document.createElement("button")
     button.setAttribute("type", "button")
     button.classList.add("collapsible")
-    button.classList.add("collapsed")
     button.textContent = category_name
     return button
 }
@@ -99,7 +100,6 @@ function create_button_element(category_name) {
 function create_div_element() {
     const div = document.createElement("div")
     div.classList.add("foods")
-    div.classList.add("collapsed")
     const ul = document.createElement("ul")
     div.appendChild(ul)
     return div
@@ -124,13 +124,29 @@ function toggle_class_collapsed() {
     }
 }
 
-function create_delete_button(selected_food) {
+function create_delete_button(baby_name, selected_food, category) {
     const delete_button = document.createElement("button")
     delete_button.setAttribute("type", "button")
     delete_button.classList.add("delete_button")
     delete_button.textContent = "x"
+    const body = {
+        category: category,
+        food: selected_food
+    }
     delete_button.addEventListener("click", function () {
-
+        fetch('/baby/' + baby_name, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body)
+        })
+            .then(function (response) {
+                return response.text()
+            })
+            .then(function () {
+                read(baby_name)
+            })
     })
     return delete_button
 }
