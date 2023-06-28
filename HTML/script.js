@@ -72,7 +72,9 @@ function turn_json_object_to_html(categories) {
         for (let j = 0; j < foods.length; j++) {
             const food = foods[j]
             const f = create_food_element(food)
+            const d = create_delete_button()
             ul.appendChild(f)
+            f.appendChild(d)
         }
     }
     toggle_class_collapsed()
@@ -122,4 +124,13 @@ function toggle_class_collapsed() {
     }
 }
 
+function create_delete_button(selected_food) {
+    const delete_button = document.createElement("button")
+    delete_button.setAttribute("type", "button")
+    delete_button.classList.add("delete_button")
+    delete_button.textContent = "x"
+    delete_button.addEventListener("click", function () {
 
+    })
+    return delete_button
+}

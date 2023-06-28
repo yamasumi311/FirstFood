@@ -27,3 +27,10 @@ def add_to_category(category, new_food, categories):
         if item == new_food:
             return False
     return categories[category].append(new_food)
+
+def remove_from_category(category, selected_food, categories):
+    if category in categories:
+        for food in categories[category]:
+            if food == selected_food:
+                return categories[category].remove(selected_food)
+        return False

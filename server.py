@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, send_from_directory
 
-from categories import add_to_category
+from categories import add_to_category, remove_from_category
 from functions import read_categories_from_file, \
     write_categories_to_file
 
@@ -22,7 +22,7 @@ def css():
     return send_from_directory('HTML', 'style.css')
 
 
-@app.route("/baby/<baby_name>", methods=['POST', 'GET'])
+@app.route("/baby/<baby_name>", methods=['POST', 'GET','DELETE'])
 def get_name(baby_name):
     if not baby_name:
         return 'Baby name is required'
@@ -33,7 +33,14 @@ def get_name(baby_name):
         category = body["category"]
         add_to_category(category, new_food, c)
         write_categories_to_file(baby_name, c)
-        return "ok"
+        return "added a food"
+    elif request.method == 'DELETE':
+        body = request.get_json()
+        selected_food = body["food"]
+        category = body["category"]
+        remove_from_category(category, selected_food, c)
+        write_categories_to_file(baby_name, c)
+        return "deleted a food"
     else:
         return c
 
