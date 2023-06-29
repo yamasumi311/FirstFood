@@ -4,12 +4,13 @@ body {
 	text-align: center;
 	margin: auto;
     letter-spacing: 1px;
+    color: #5c5656;
 }
 
 form {
     border-radius: 5px;
     background-color: rgb(156, 215, 223);
-    color: white;
+    /* color: white; */
     padding: 20px 20px 5px;
     margin: 10px auto;
     text-align: left;
@@ -29,7 +30,7 @@ form {
 
 .collapsible {
     background-color: #ffe54c;
-    color: white;
+    /* color: white; */
     cursor: pointer;
     padding: 1em;
     border: none;
@@ -89,7 +90,7 @@ li {
 
 
 .number_food {
-    color: white;
+    /* color: white; */
     font-size: 0.8em;
 }
 

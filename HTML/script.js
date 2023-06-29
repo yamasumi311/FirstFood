@@ -6,21 +6,29 @@ function read(baby_name) {
             return response.json()
         })
         .then(function (foods) {
-            turn_json_object_to_html(baby_name, foods)
+            const total_count = turn_json_object_to_html(baby_name, foods)
+            return total_count
         })
 }
 
 function read_baby_name_file(event) {
     event.preventDefault();
     const baby_name = event.target.elements.baby_name.value
-    read(baby_name).then(function () {
+    read(baby_name).then(function (total_count) {
         register_adding_new_food(baby_name)
-        const header = document.getElementById('baby_name')
-        header.classList.remove('hidden')
-        header.querySelector('h1').textContent = baby_name
+        const headerCollection = document.getElementsByClassName('baby_name')
+        for (let i = 0; i < headerCollection.length; i++) {
+            const header = headerCollection[i]
+            header.classList.remove('hidden')
+            header.querySelector('h1').textContent = baby_name
+        }
         document.getElementById('form_baby_name').classList.add('hidden')
+        const total = document.getElementById('total')
+        total.classList.remove('hidden')
+        total.textContent = baby_name + " has tried " + total_count + " foods !"
     })
 }
+
 
 document.getElementById('form_baby_name')
     .addEventListener('submit', read_baby_name_file)
@@ -63,10 +71,12 @@ function turn_json_object_to_html(baby_name, categories) {
     const category_names = Object.keys(categories)
     const root = document.getElementById("list")
     root.innerHTML = ''
+    let total_food = 0
     for (let i = 0; i < category_names.length; i++) {
         const category = category_names[i]
         const foods = categories[category]
         const number_food = foods.length
+        total_food = total_food + number_food
         const button_element = create_button_element(category, number_food)
         const div_element = create_div_element()
         const ul = div_element.querySelector("ul")
@@ -81,7 +91,7 @@ function turn_json_object_to_html(baby_name, categories) {
         }
     }
     toggle_class_collapsed()
-
+    return total_food
 }
 
 function create_food_element(food_name) {
