@@ -1,55 +1,69 @@
 body {
-    background-color: rgb(202, 209, 176);
+    background-color: rgb(255, 255, 255);
     font-size: 1em;
 	text-align: center;
 	margin: auto;
+    letter-spacing: 1px;
 }
 
 form {
     border-radius: 5px;
-    background-color: rgb(243, 239, 190);
+    background-color: rgb(156, 215, 223);
+    color: white;
     padding: 20px 20px 5px;
     margin: 10px auto;
     text-align: left;
-        width: 90%;
+    width: 85%;
+    box-shadow: #fff 4px 4px 0 0,#5c5656 4px 4px 0 1px;
+    border: 1px solid #5c5656;
 }
+
+.submit {
+
+}
+
 
 .hidden {
     display: none;
 }
 
 .collapsible {
-    background-color: rgb(119, 107, 107);
+    background-color: #ffe54c;
     color: white;
     cursor: pointer;
     padding: 1em;
     border: none;
+    border-bottom: 1px solid #5c5656;
     border-radius: 10px 10px 0 0;
     text-align: left;
     outline: none;
     font-size: 1em;
-    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.active, .collapsible:hover {
+/* .active, .collapsible:hover {
     background-color: rgb(56, 43, 43);
-}
+} */
 
 .foods {
     padding: 0 1em;
     overflow: hidden;
-    background-color: #ffffff;
+    color: #5c5656;
     text-align: left;
     border: none;
     border-radius: 0 0 10px 10px;
     margin-bottom: 0.5em;
 }
 
-#list {
+#list {border-radius: 10px;
     width: 90%;
     display: flex;
     flex-direction: column;
     margin: auto;
+    box-shadow: #fff 4px 4px 0 0,#5c5656 4px 4px 0 1px;
+    border: 1px solid #5c5656;
 }
 
 .foods.collapsed {
@@ -73,7 +87,55 @@ li {
     color: #cac7c7;
 }
 
-.active, .delete_button:hover {
-    background-color: rgb(227, 228, 190);
-    color: black;
+
+.number_food {
+    color: white;
+    font-size: 0.8em;
+}
+
+/* 
+<!-- HTML !-->
+<button class="button-8" role="button">Button 8</button> */
+
+/* CSS */
+.button-8 {
+  background-color: #e1ecf4;
+  border-radius: 5px;
+  border: 1px solid #7aa7c7;
+  /* box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset; */
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-8:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
 }

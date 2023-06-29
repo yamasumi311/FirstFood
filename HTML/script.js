@@ -66,7 +66,8 @@ function turn_json_object_to_html(baby_name, categories) {
     for (let i = 0; i < category_names.length; i++) {
         const category = category_names[i]
         const foods = categories[category]
-        const button_element = create_button_element(category)
+        const number_food = foods.length
+        const button_element = create_button_element(category, number_food)
         const div_element = create_div_element()
         const ul = div_element.querySelector("ul")
         root.appendChild(button_element)
@@ -89,11 +90,15 @@ function create_food_element(food_name) {
     return food
 }
 
-function create_button_element(category_name) {
+function create_button_element(category_name, number_food) {
     const button = document.createElement("button")
     button.setAttribute("type", "button")
     button.classList.add("collapsible")
     button.textContent = category_name
+    const number_types = document.createElement("span")
+    number_types.classList.add("number_food")
+    number_types.textContent = number_food + "types"
+    button.appendChild(number_types)
     return button
 }
 
