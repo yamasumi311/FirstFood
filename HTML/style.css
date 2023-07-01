@@ -1,10 +1,9 @@
 body {
     background-color: rgb(255, 255, 255);
     font-size: 1em;
-	text-align: center;
 	margin: auto;
     letter-spacing: 1px;
-    color: #5c5656;
+    text-align: center;
 }
 
 form {
@@ -30,11 +29,9 @@ form {
 
 .collapsible {
     background-color: #ffe54c;
-    /* color: white; */
     cursor: pointer;
     padding: 1em;
-    border: none;
-    border-bottom: 1px solid #5c5656;
+    border: 1px solid #5c5656;
     border-radius: 10px 10px 0 0;
     text-align: left;
     outline: none;
@@ -42,6 +39,9 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    letter-spacing: 1px;
+    color: #5c5656;
+    margin: 0.5em 0.5em 0 0.5em;
 }
 
 /* .active, .collapsible:hover {
@@ -54,8 +54,11 @@ form {
     color: #5c5656;
     text-align: left;
     border: none;
+    border-left: 1px solid #5c5656;
+    border-right: 1px solid #5c5656;
+    border-bottom: 1px solid #5c5656;
     border-radius: 0 0 10px 10px;
-    margin-bottom: 0.5em;
+    margin:0 0.5em 0.5em 0.5em;
 }
 
 #list {border-radius: 10px;
@@ -63,8 +66,6 @@ form {
     display: flex;
     flex-direction: column;
     margin: auto;
-    box-shadow: #fff 4px 4px 0 0,#5c5656 4px 4px 0 1px;
-    border: 1px solid #5c5656;
 }
 
 .foods.collapsed {
