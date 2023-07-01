@@ -1,5 +1,30 @@
 "use strict";
 
+/*
+
+
+
+
+*/
+function read_last_used_baby_name() {
+    const baby_name = localStorage.getItem("baby_name")
+    if (baby_name) {
+        read_first_time(baby_name)
+    }
+}
+read_last_used_baby_name()
+
+/*
+remove item from local storage = switch to different baby 
+*/
+function switch_baby_name() {
+    localStorage.removeItem("baby_name")
+    window.location.reload()
+}
+
+document.getElementById("switch_baby")
+    .addEventListener("click", switch_baby_name)
+
 function read(baby_name) {
     return fetch('/baby/' + baby_name)
         .then(function (response) {
@@ -7,25 +32,29 @@ function read(baby_name) {
         })
         .then(function (foods) {
             const total_count = turn_json_object_to_html(baby_name, foods)
-            return total_count
+            const headerCollection = document.getElementsByClassName('baby_name')
+            for (let i = 0; i < headerCollection.length; i++) {
+                const header = headerCollection[i]
+                header.classList.remove('hidden')
+                header.querySelector('h1').textContent = baby_name
+            }
+            document.getElementById('form_baby_name').classList.add('hidden')
+            const total = document.getElementById('total')
+            total.classList.remove('hidden')
+            total.textContent = baby_name + " has tried " + total_count + " foods !"
         })
 }
 
 function read_baby_name_file(event) {
     event.preventDefault();
     const baby_name = event.target.elements.baby_name.value
-    read(baby_name).then(function (total_count) {
+    localStorage.setItem("baby_name", baby_name);
+    read_first_time(baby_name)
+}
+
+function read_first_time(baby_name) {
+    read(baby_name).then(function () {
         register_adding_new_food(baby_name)
-        const headerCollection = document.getElementsByClassName('baby_name')
-        for (let i = 0; i < headerCollection.length; i++) {
-            const header = headerCollection[i]
-            header.classList.remove('hidden')
-            header.querySelector('h1').textContent = baby_name
-        }
-        document.getElementById('form_baby_name').classList.add('hidden')
-        const total = document.getElementById('total')
-        total.classList.remove('hidden')
-        total.textContent = baby_name + " has tried " + total_count + " foods !"
     })
 }
 
@@ -55,8 +84,7 @@ function register_adding_new_food(baby_name) {
             .then(function (response) {
                 return response.text()
             })
-            .then(function (p) {
-                console.log(p)
+            .then(function () {
                 read(baby_name)
             })
     }
@@ -107,7 +135,7 @@ function create_button_element(category_name, number_food) {
     button.textContent = category_name
     const number_types = document.createElement("span")
     number_types.classList.add("number_food")
-    number_types.textContent = number_food + "types"
+    number_types.textContent = number_food + " types"
     button.appendChild(number_types)
     return button
 }
