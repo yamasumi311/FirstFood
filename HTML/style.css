@@ -10,14 +10,26 @@ form {
     border-radius: 5px;
     background-color: rgb(156, 215, 223);
     /* color: white; */
-    padding: 20px 20px 5px;
+    padding: 20px;
     margin: 10px auto;
     text-align: left;
     width: 85%;
     box-shadow: #fff 4px 4px 0 0,#5c5656 4px 4px 0 1px;
     border: 1px solid #5c5656;
+    display: flex;
+    flex-direction: inherit;
 }
 
+input {
+    height: 3em;
+    width: 45%;
+    margin-right: 2px;
+}
+
+select {
+    width: 45%;
+    margin-right: 2px;
+}
 
 .hidden {
     display: none;
@@ -102,3 +114,4 @@ footer {
     text-align: right;
     margin: 1em;
 }
+
