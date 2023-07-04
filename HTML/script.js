@@ -85,7 +85,10 @@ function register_adding_new_food(baby_name) {
                 return response.text()
             })
             .then(function () {
-                read(baby_name)
+                return read(baby_name)
+            })
+            .then(function () {
+                event.target.elements.new_food.value = ''
             })
     }
 
