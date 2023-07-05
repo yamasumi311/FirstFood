@@ -105,7 +105,7 @@ function turn_json_object_to_html(baby_name, categories) {
     let total_food = 0
     for (let i = 0; i < category_names.length; i++) {
         const category = category_names[i]
-        const foods = categories[category]
+        const foods = categories[category].sort()
         const number_food = foods.length
         total_food = total_food + number_food
         const button_element = create_button_element(category, number_food)
